@@ -19,11 +19,13 @@ io.on("connection", (socket) => {
   });
 
   socket.on("chat message", (msg, callback) => {
-    console.log("message: " + msg);
-    io.emit("chat message", msg);
-    callback({
-      status: "ok",
-    });
+    if (msg !== "test-ok") {
+      console.log("message: " + msg);
+      io.emit("chat message", msg);
+      callback({
+        status: "ok",
+      });
+    }
   });
 });
 
